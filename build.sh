@@ -13,11 +13,7 @@ curl -L https://download.docker.com/linux/fedora/docker-ce.repo \
 # Visual Studio Code
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" \
-    >  /etc/yum.repos.d/vscode.repo
-
-# Proton VPM
-# rpm-ostree install \
-    # "https://repo.protonvpn.com/fedora-$(cat /etc/fedora-release | cut -d' ' -f 3)-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.1-2.noarch.rpm"
+    > /etc/yum.repos.d/vscode.repo
 
 ### Install packages
 
@@ -27,7 +23,7 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-rpm-ostree install \
+rpm-ostree install -y \
     code \
     containerd.io \
     docker-buildx-plugin \
@@ -43,12 +39,11 @@ rpm-ostree install \
     virt-manager \
     virt-top \
     virt-viewer \
-    wireshark
+    wireshark \
+    "https://github.com/baduhai/Koi/releases/download/0.3.1/Koi-0.3.1-1--FEDORA.x86_64.rpm"
 
+# Uninstall base packages
 rpm-ostree uninstall firefox firefox-langpacks
-
-# this would install a package from rpmfusion
-# rpm-ostree install vlc
 
 #### Example for enabling a System Unit File
 systemctl enable docker
