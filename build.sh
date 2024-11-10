@@ -39,8 +39,7 @@ rpm-ostree install -y \
     virt-manager \
     virt-top \
     virt-viewer \
-    wireshark \
-    "https://github.com/baduhai/Koi/releases/download/0.3.1/Koi-0.3.1-1--FEDORA.x86_64.rpm"
+    wireshark
 
 # Uninstall base packages
 rpm-ostree uninstall firefox firefox-langpacks
