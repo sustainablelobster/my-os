@@ -48,12 +48,3 @@ rpm-ostree uninstall firefox firefox-langpacks
 systemctl enable docker
 systemctl enable libvirtd
 systemctl enable podman.socket
-
-### Misc. customizations
-
-# Make Breeze Fedora sddm background modifiable
-VAR_BG_DIR="/var/usrlocal/share/backgrounds"
-mkdir -p "$VAR_BG_DIR"
-ln -sf /usr/share/backgrounds/f41/default/f41-01-day.png "$VAR_BG_DIR/sddm.png"
-sed -i "s%/usr/share/backgrounds/default.png%$VAR_BG_DIR/sddm.png%g" \
-	/usr/share/sddm/themes/01-breeze-fedora/theme.conf
