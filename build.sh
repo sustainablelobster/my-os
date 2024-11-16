@@ -15,6 +15,10 @@ rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" \
     > /etc/yum.repos.d/vscode.repo
 
+# Koi
+curl -L https://copr.fedorainfracloud.org/coprs/birkch/Koi/repo/fedora-41/birkch-Koi-fedora-41.repo \
+    -o /etc/yum.repos.d/birkch-Koi-fedora-41.repo
+
 ### Install packages
 
 # Packages can be installed from any enabled yum repo on the image.
@@ -30,6 +34,7 @@ rpm-ostree install -y \
     docker-ce \
     docker-ce-cli \
     docker-compose-plugin \
+    Koi \
     libvirt-daemon-config-network \
     libvirt-daemon-kvm \
     python3-libguestfs \
