@@ -19,6 +19,10 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 curl -L https://copr.fedorainfracloud.org/coprs/birkch/Koi/repo/fedora-41/birkch-Koi-fedora-41.repo \
     -o /etc/yum.repos.d/birkch-Koi-fedora-41.repo
 
+# Nvidia Container Toolkit
+curl -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo \
+    -o /etc/yum.repos.d/nvidia-container-toolkit.repo
+
 ### Install packages
 
 # Packages can be installed from any enabled yum repo on the image.
@@ -37,6 +41,7 @@ rpm-ostree install -y \
     Koi \
     libvirt-daemon-config-network \
     libvirt-daemon-kvm \
+    nvidia-container-toolkit \
     python3-libguestfs \
     qemu-kvm \
     solaar \
