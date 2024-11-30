@@ -35,6 +35,7 @@ rpm-ostree install -y \
     code \
     containerd.io \
     cuda \
+    cuda-nvcc \
     docker-buildx-plugin \
     docker-ce \
     docker-ce-cli \
