@@ -34,6 +34,7 @@ curl -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container
 rpm-ostree install -y \
     code \
     containerd.io \
+    cuda \
     docker-buildx-plugin \
     docker-ce \
     docker-ce-cli \
