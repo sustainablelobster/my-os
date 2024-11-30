@@ -40,6 +40,8 @@ rpm-ostree install -y \
     docker-ce \
     docker-ce-cli \
     docker-compose-plugin \
+    gcc \
+    gcc-c++ \
     Koi \
     libvirt-daemon-config-network \
     libvirt-daemon-kvm \
