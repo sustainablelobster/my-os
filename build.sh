@@ -37,6 +37,7 @@ rpm-ostree install -y \
     cuda \
     cuda-cudart \
     cuda-cudart-devel \
+    cuda-cudart-static \
     cuda-nvcc \
     docker-buildx-plugin \
     docker-ce \
