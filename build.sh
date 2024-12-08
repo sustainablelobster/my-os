@@ -10,22 +10,20 @@ RELEASE="$(rpm -E %fedora)"
 curl -L https://download.docker.com/linux/fedora/docker-ce.repo \
     -o /etc/yum.repos.d/docker-ce.repo
 
+# Koi
+curl -L https://copr.fedorainfracloud.org/coprs/birkch/Koi/repo/fedora-$RELEASE/birkch-Koi-fedora-$RELEASE.repo \
+    -o /etc/yum.repos.d/birkch-Koi-fedora-$RELEASE.repo
+
 # Visual Studio Code
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
-echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" \
-    > /etc/yum.repos.d/vscode.repo
-
-# Koi
-curl -L https://copr.fedorainfracloud.org/coprs/birkch/Koi/repo/fedora-41/birkch-Koi-fedora-41.repo \
-    -o /etc/yum.repos.d/birkch-Koi-fedora-41.repo
-
-# Nvidia Container Toolkit
-curl -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo \
-    -o /etc/yum.repos.d/nvidia-container-toolkit.repo
-
-# Python-validity (P51 fingerprint reader)
-curl -L https://copr.fedorainfracloud.org/coprs/sneexy/python-validity/repo/fedora-41/sneexy-python-validity-fedora-41.repo \
-    -o /etc/yum.repos.d/sneexy-python-validity-fedora-41.repo
+cat << EOF > /etc/yum.repos.d/vscode.repo
+[code]
+name=Visual Studio Code
+baseurl=https://packages.microsoft.com/yumrepos/vscode
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+EOF
 
 ### Install packages
 
@@ -34,38 +32,25 @@ curl -L https://copr.fedorainfracloud.org/coprs/sneexy/python-validity/repo/fedo
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-
 # Uninstall base packages
 rpm-ostree uninstall \
     firefox \
-    firefox-langpacks \
-    fprintd \
-    fprintd-pam
+    firefox-langpacks
 
-# this installs a package from fedora repos
+# Installs packages
 rpm-ostree install -y \
     code \
     containerd.io \
-    cuda \
-    cuda-cudart \
-    cuda-cudart-devel \
-    cuda-cudart-static \
-    cuda-nvcc \
     docker-buildx-plugin \
     docker-ce \
     docker-ce-cli \
     docker-compose-plugin \
-    fprintd-clients \
-    fprintd-clients-pam \
     gcc \
     gcc-c++ \
     Koi \
     libvirt-daemon-config-network \
     libvirt-daemon-kvm \
-    nvidia-container-toolkit \
-    open-fprintd \
     python3-libguestfs \
-    python3-validity \
     qemu-kvm \
     solaar \
     virt-install \
@@ -74,16 +59,9 @@ rpm-ostree install -y \
     virt-viewer \
     wireshark
 
-#### Example for enabling a System Unit File
+### Enable services
+
 systemctl enable \
     docker \
     libvirtd \
-    open-fprintd \
-    open-fprintd-resume \
-    open-fprintd-suspend \
-    podman.socket \
-    python3-validity
-
-# Enable fingerprint auth
-authselect enable-feature with-fingerprint
-authselect apply-changes
+    podman.socket
