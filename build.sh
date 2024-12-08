@@ -23,12 +23,24 @@ curl -L https://copr.fedorainfracloud.org/coprs/birkch/Koi/repo/fedora-41/birkch
 curl -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo \
     -o /etc/yum.repos.d/nvidia-container-toolkit.repo
 
+# Python-validity (P51 fingerprint reader)
+curl -L https://copr.fedorainfracloud.org/coprs/sneexy/python-validity/repo/fedora-41/sneexy-python-validity-fedora-41.repo \
+    -o /etc/yum.repos.d/sneexy-python-validity-fedora-41.repo
+
 ### Install packages
 
 # Packages can be installed from any enabled yum repo on the image.
 # RPMfusion repos are available by default in ublue main images
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
+
+
+# Uninstall base packages
+rpm-ostree uninstall \
+    firefox \
+    firefox-langpacks \
+    fprintd \
+    fprintd-pam
 
 # this installs a package from fedora repos
 rpm-ostree install -y \
@@ -43,13 +55,17 @@ rpm-ostree install -y \
     docker-ce \
     docker-ce-cli \
     docker-compose-plugin \
+    fprintd-clients \
+    fprintd-clients-pam \
     gcc \
     gcc-c++ \
     Koi \
     libvirt-daemon-config-network \
     libvirt-daemon-kvm \
     nvidia-container-toolkit \
+    open-fprintd \
     python3-libguestfs \
+    python3-validity \
     qemu-kvm \
     solaar \
     virt-install \
@@ -58,10 +74,16 @@ rpm-ostree install -y \
     virt-viewer \
     wireshark
 
-# Uninstall base packages
-rpm-ostree uninstall firefox firefox-langpacks
-
 #### Example for enabling a System Unit File
-systemctl enable docker
-systemctl enable libvirtd
-systemctl enable podman.socket
+systemctl enable \
+    docker \
+    libvirtd \
+    open-fprintd \
+    open-fprintd-resume \
+    open-fprintd-suspend \
+    podman.socket \
+    python3-validity
+
+# Enable fingerprint auth
+authselect enable-feature with-fingerprint
+authselect apply-changes
