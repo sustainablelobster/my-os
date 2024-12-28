@@ -10,8 +10,14 @@ RELEASE="$(rpm -E %fedora)"
 curl -L https://download.docker.com/linux/fedora/docker-ce.repo \
     -o /etc/yum.repos.d/docker-ce.repo
 
+# Ghostty
+curl -L \
+    https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-$RELEASE/pgdev-ghostty-fedora-$RELEASE.repo \
+    -o /etc/yum.repos.d/pgdev-ghostty-fedora-$RELEASE.repo
+
 # Koi
-curl -L https://copr.fedorainfracloud.org/coprs/birkch/Koi/repo/fedora-$RELEASE/birkch-Koi-fedora-$RELEASE.repo \
+curl -L \
+    https://copr.fedorainfracloud.org/coprs/birkch/Koi/repo/fedora-$RELEASE/birkch-Koi-fedora-$RELEASE.repo \
     -o /etc/yum.repos.d/birkch-Koi-fedora-$RELEASE.repo
 
 # Visual Studio Code
@@ -47,6 +53,7 @@ rpm-ostree install -y \
     docker-compose-plugin \
     gcc \
     gcc-c++ \
+    ghostty \
     Koi \
     libvirt-daemon-config-network \
     libvirt-daemon-kvm \
