@@ -36,12 +36,14 @@ EOF
 # Uninstall base packages
 rpm-ostree uninstall \
     firefox \
-    firefox-langpacks
+    firefox-langpacks \
+    toolbox
 
 # Installs packages
 rpm-ostree install -y \
     code \
     containerd.io \
+    distrobox \
     docker-buildx-plugin \
     docker-ce \
     docker-ce-cli \
