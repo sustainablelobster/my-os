@@ -54,6 +54,7 @@ rpm-ostree install -y \
     libvirt-daemon-kvm \
     python3-libguestfs \
     qemu-kvm \
+    remmina \
     solaar \
     virt-install \
     virt-manager \
