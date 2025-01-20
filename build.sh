@@ -55,6 +55,15 @@ rpm-ostree install -y \
     python3-libguestfs \
     qemu-kvm \
     remmina \
+    remmina-plugins-exec \
+    remmina-plugins-kwallet \
+    remmina-plugins-python \
+    remmina-plugins-rdp \
+    remmina-plugins-secret \
+    remmina-plugins-spice \
+    remmina-plugins-vnc \
+    remmina-plugins-www \
+    remmina-plugins-x2go \
     solaar \
     virt-install \
     virt-manager \
