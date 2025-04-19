@@ -7,23 +7,24 @@ RELEASE="$(rpm -E %fedora)"
 ### Install repos
 
 # Docker Community Edition
-curl -L https://download.docker.com/linux/fedora/docker-ce.repo \
-    -o /etc/yum.repos.d/docker-ce.repo
+curl -Lo /etc/yum.repos.d/docker-ce.repo \
+    https://download.docker.com/linux/fedora/docker-ce.repo
 
 # Koi
-curl -L \
-    https://copr.fedorainfracloud.org/coprs/birkch/Koi/repo/fedora-$RELEASE/birkch-Koi-fedora-$RELEASE.repo \
-    -o /etc/yum.repos.d/birkch-Koi-fedora-$RELEASE.repo
+curl -Lo /etc/yum.repos.d/birkch-Koi-fedora-$RELEASE.repo \
+    https://copr.fedorainfracloud.org/coprs/birkch/Koi/repo/fedora-$RELEASE/birkch-Koi-fedora-$RELEASE.repo 
 
-# Visual Studio Code
-rpm --import https://packages.microsoft.com/keys/microsoft.asc
-cat << EOF > /etc/yum.repos.d/vscode.repo
-[code]
-name=Visual Studio Code
-baseurl=https://packages.microsoft.com/yumrepos/vscode
+# VSCodium
+rpm --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
+cat > /etc/yum.repos.d/vscodium.repo << EOF
+[gitlab.com_paulcarroty_vscodium_repo]
+name=download.vscodium.com
+baseurl=https://download.vscodium.com/rpms/
 enabled=1
 gpgcheck=1
-gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+repo_gpgcheck=1
+gpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
+metadata_expire=1h 
 EOF
 
 ### Install packages
@@ -39,9 +40,9 @@ rpm-ostree uninstall \
     firefox-langpacks \
     toolbox
 
-# Installs packages
+# Install packages
 rpm-ostree install -y \
-    code \
+    codium \
     containerd.io \
     distrobox \
     docker-buildx-plugin \
