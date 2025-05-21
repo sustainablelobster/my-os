@@ -44,7 +44,7 @@ rpm-ostree uninstall \
 rpm-ostree install -y \
     codium \
     containerd.io \
-    diffstat
+    diffstat \
     distrobox \
     docker-buildx-plugin \
     docker-ce \
@@ -52,6 +52,7 @@ rpm-ostree install -y \
     docker-compose-plugin \
     doxygen \
     gettext \
+    git \
     git-lfs \
     Koi \
     libvirt-daemon-config-network \
