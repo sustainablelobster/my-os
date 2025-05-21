@@ -44,15 +44,20 @@ rpm-ostree uninstall \
 rpm-ostree install -y \
     codium \
     containerd.io \
+    diffstat
     distrobox \
     docker-buildx-plugin \
     docker-ce \
     docker-ce-cli \
     docker-compose-plugin \
+    doxygen \
+    gettext \
     git-lfs \
     Koi \
     libvirt-daemon-config-network \
     libvirt-daemon-kvm \
+    patch \
+    patchutils \
     python3-libguestfs \
     qemu-kvm \
     remmina \
@@ -66,6 +71,8 @@ rpm-ostree install -y \
     remmina-plugins-www \
     remmina-plugins-x2go \
     solaar \
+    subversion \
+    systemtap \
     virt-install \
     virt-manager \
     virt-top \
