@@ -55,6 +55,7 @@ rpm-ostree install -y \
     git \
     git-lfs \
     Koi \
+    libxcrypt \
     libvirt-daemon-config-network \
     libvirt-daemon-kvm \
     patch \
