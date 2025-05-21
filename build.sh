@@ -55,7 +55,6 @@ rpm-ostree install -y \
     git \
     git-lfs \
     Koi \
-    libxcrypt \
     libvirt-daemon-config-network \
     libvirt-daemon-kvm \
     patch \
@@ -75,6 +74,7 @@ rpm-ostree install -y \
     solaar \
     subversion \
     systemtap \
+    vagrant \
     virt-install \
     virt-manager \
     virt-top \
