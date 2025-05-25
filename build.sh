@@ -35,10 +35,7 @@ EOF
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # Uninstall base packages
-rpm-ostree uninstall \
-    firefox \
-    firefox-langpacks \
-    toolbox
+rpm-ostree uninstall toolbox
 
 # Install packages
 rpm-ostree install -y \
