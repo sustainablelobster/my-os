@@ -82,7 +82,8 @@ rpm-ostree install -y \
     virt-manager \
     virt-top \
     virt-viewer \
-    wireshark
+    wireshark \
+    wxGTK-devel
 
 ### Enable services
 
