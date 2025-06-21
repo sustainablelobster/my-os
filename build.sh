@@ -39,6 +39,7 @@ rpm-ostree uninstall toolbox
 
 # Install packages
 rpm-ostree install -y \
+    automake \
     codium \
     containerd.io \
     diffstat \
@@ -48,12 +49,16 @@ rpm-ostree install -y \
     docker-ce-cli \
     docker-compose-plugin \
     doxygen \
+    gcc \
+    gcc-c++ \
     gettext \
     git \
     git-lfs \
+    kernel-devel \
     Koi \
     libvirt-daemon-config-network \
     libvirt-daemon-kvm \
+    make \
     patch \
     patchutils \
     python3-libguestfs \
