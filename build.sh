@@ -43,6 +43,7 @@ rpm-ostree install -y \
     codium \
     containerd.io \
     cryptopp-devel \
+    device-mapper-devel \
     diffstat \
     distrobox \
     docker-buildx-plugin \
