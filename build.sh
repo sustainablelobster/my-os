@@ -42,6 +42,7 @@ rpm-ostree install -y \
     automake \
     codium \
     containerd.io \
+    cryptopp-devel \
     diffstat \
     distrobox \
     docker-buildx-plugin \
