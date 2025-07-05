@@ -89,10 +89,3 @@ systemctl enable \
     docker \
     libvirtd \
     podman.socket
-
-### Install misc. software
-
-# DevPod CLI
-curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && 
-    install -c -m 0755 devpod /usr/local/bin && 
-    rm -f devpod
