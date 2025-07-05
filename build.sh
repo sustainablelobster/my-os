@@ -42,8 +42,6 @@ rpm-ostree install -y \
     automake \
     codium \
     containerd.io \
-    cryptopp-devel \
-    device-mapper-devel \
     diffstat \
     distrobox \
     docker-buildx-plugin \
@@ -83,8 +81,7 @@ rpm-ostree install -y \
     virt-manager \
     virt-top \
     virt-viewer \
-    wireshark \
-    wxGTK-devel
+    wireshark
 
 ### Enable services
 
